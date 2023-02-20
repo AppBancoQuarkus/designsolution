@@ -2,10 +2,11 @@ SEMANA 2
 
 Todo cliente puede usar los sistemas multicanales del banco (Web, Movil)
 previo registro en el sistema. Para ello va a tener que registrar a partir de su
-tarjeta de débito y validarla correctamente: número de tarjeta, fecha de
-vencimiento y código de validación. Adicionalmente, el usuario deberá
-proporcionar su tipo y número de documento de identificación y esta debe
-coincidir con los datos del cliente al que pertenece la tarjeta de débito usada
+tarjeta de débito y validarla correctamente: 
+	número de tarjeta, fecha de vencimiento y código de validación. 
+Adicionalmente, el usuario deberá proporcionar su 
+	tipo y número de documento de identificación 
+y esta debe coincidir con los datos del cliente al que pertenece la tarjeta de débito usada
 para el registro.
 
 
@@ -51,7 +52,7 @@ Buscar idTarjeta en cuenta y validar que sea de debito (TD)
 El sistema deberá ser capaz de retornar en una sola consulta todos los saldos
 de los productos de un cliente y agrupados en: créditos, tarjetas de crédito y
 cuentas bancarias.
-
+SELECT * FROM CUENTAS WHERE IDCUSTOMER= ? AND FLAG_CREATION<> ?(TD)
 Buscar en cuenta por idCliente TC, C y CB
 
 --------------------------------------------------------------------------------------
