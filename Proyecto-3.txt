@@ -1,0 +1,95 @@
+-REQUERIMIENTO SEMANA 3
+*************************************************************************************************************
+************ (msphone)
+*************************************************************************************************************
+-Cualquier persona natural o jurídica podrá crear su billetera digital asociado 
+a su número de celular. Para ello va a tener que registrar sus datos 
+personales y el número de celular
+-Para acceder a su billetera digital el usuario deberá proporcionar una 
+contraseña de 6 dígitos que debió agregar durante el registro de su billetera.
+*************************************************************************************************************
+-crear billetera digital 
+	input:
+	- nombre   string
+	- apellido string
+	- telefono string
+	- correo   string
+	- contraseña integer(6 digitos)
+	- idAccount  default null
+**************************************************************************************************************
+- Un cliente del banco puede asociar su billetera digital a su tarjeta de débito 
+	permitiendo que los depósitos y pagos sean registrados directamente a la 
+	cuenta principal asociada a la tarjeta de débito
+**************************************************************************************************************
+-modificar billetera digital(modifica idAccount, correo,contraseña):Sumar montos totales
+(llamar metodo buscar cuenta por nroCuenta)
+-consultar msOperacion(validando la tdebito y que la cuenta sea principal) si esta asociado
+
+*************************************************************************************************************
+************ (mspayment)
+*************************************************************************************************************
+**************************************************************************************************************
+-Se podrá recibir pagos o emitir pagos desde o hacia una billetera con solo el 
+número de teléfono
+-Tendrá un tope máximo de 500 S/ de dinero que se puede pagar por día.
+**************************************************************************************************************
+-operaciones digitales(hacer pagos con numero de celular)
+	-id billetera digital origen
+	-id billetera digital destino
+	-monto(validacion tope 500)
+	-fecha de pago
+**************************************************************************************************************
+-Los movimientos de la billetera deberán registrar los siguientes datos: el 
+número de celular, fecha, monto (positivo para pagos recibidos y negativo 
+para los pagos emitidos) y una descripción breve.
+**************************************************************************************************************
+-realizar operaciones
+	-numero de celular
+	-fecha
+	-monto(positivo y negativo)
+	-descripción
+
+-
+**************************************************************************************************************
+-Para poder asociar la tarjeta de débito deberá validar la tarjeta de débito con 
+su código de validación. Validada la tarjeta el sistema generará un código de 
+aprobación de 8 dígitos con una vigencia de 1 hora que también debe ser
+enviado al sistema multicanal para que con una nueva API reciba este código 
+de operación, su código de validación y el PIN para autenticar la tarjeta. Si la 
+tarjeta fue validada en el sistema multicanal y el código de operación todavía 
+está vigente entonces la billetera digital queda asociada a la tarjeta de débito
+**************************************************************************************************************
+-validar en mscard la td con codigo de validacion
+-crear una tabla genracion de codigo token 8 digitos con fecha expiracion de 1h
+-crear en msUser api que reciba el codigo de operacion,codigo de validacion y pin de la tarjeta
+-preguntar bien funcionalidad
+
+*************************************************************************************************************
+************ (mspromotion)
+*************************************************************************************************************
+**************************************************************************************************************
+-El pago con la billetera le permite al cliente poder disfrutar de promociones, 
+estas promociones tendrán los siguientes datos: Título, nombre de la tienda, 
+monto a pagar por la promoción, porcentaje de descuento, monto original, 
+descripción de la promoción, intervalo de vigencia de la promoción, stock, 
+URL de la imagen de la promoción. El sistema deberá tener la capacidad de 
+gestionar estas promociones exceptuando que la consulta de las 
+promociones vigentes del día deberá estar en un caché con la información 
+de las promociones que son válidas solo para ese día.
+**************************************************************************************************************
+-registro de promociones
+	-titulo
+	-nombre de tienda
+	-monto a pagar de promociones
+	-porcentaje de descuento
+	-monto original
+	-descripcion de la promociones
+	-vigencia
+	-stock
+	-url de imagen de promociones
+-consultar promociones
+		-en redis obtener promociones del dia(verificar si es nulo en redis buscar en bd)
+		(si no es nulo en redis mostrar redis)
+		
+	
+**************************************************************************************************************
